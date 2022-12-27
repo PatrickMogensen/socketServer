@@ -6,7 +6,7 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 
 app.use(bodyParser.json({ extended: true }))
-app.use(cors({ origin: '*', "http://localhost:63342" }))
+app.use(cors());
 
 const io = require('socket.io')(http, {
     cors: {
