@@ -10,7 +10,7 @@ app.use(cors({ origin: '*' }))
 
 const io = require('socket.io')(http, {
     cors: {
-        origin: '*',
+        origin: ['*', "localhost:63342"],
         methods: ['GET', 'POST'],
         allowedHeaders: ['authorizationToken', 'roomId', 'email'],
         AccessControlAllowOrigin: '*',
