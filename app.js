@@ -1,7 +1,7 @@
 const app = require('express')()
 const http = require('http').Server(app)
 //require('dotenv').config()
-const port = 4000
+const port = 8080
 const cors = require('cors')
 const bodyParser = require('body-parser')
 
