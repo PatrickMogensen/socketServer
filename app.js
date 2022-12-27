@@ -4,6 +4,7 @@ const http = require('http').createServer(app)
 const port = 8080
 const cors = require('cors')
 const bodyParser = require('body-parser')
+const fetch = require('node-fetch');
 
 app.use(bodyParser.json({ extended: true }))
 app.use(cors({  // TODO check if this is still needed
