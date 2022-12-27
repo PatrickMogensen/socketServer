@@ -13,7 +13,7 @@ const io = require('socket.io')(http, {
         origin: '*',
         methods: ['GET', 'POST'],
         allowedHeaders: ['authorizationToken', 'roomId', 'email'],
-        accessControlAllowOrigin: '*',
+        AccessControlAllowOrigin: '*',
 
 
     }
