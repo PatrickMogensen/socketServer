@@ -10,12 +10,16 @@ app.use(cors({  // TODO check if this is still needed
     credentials: true,
     origin: true
 }));
+
+app.use((req, res, next) => {
+    res.append('Access-Control-Allow-Origin', ['*']);
+})
 const io = require('socket.io')(http, {
     cors: {
         origin: ['*', "http://localhost:63342"],
         methods: ['GET', 'POST'],
         allowedHeaders: ['authorizationToken', 'roomId', 'email'],
-        AccessControlAllowOrigin: '*',
+        "Access-Control-Allow-Origin": '*',
 
     }
 })
@@ -24,7 +28,9 @@ io.engine.on("headers", (headers, req) => {
     headers["Access-Control-Allow-Origin"] = "*";
 });
 
-let onlineUsers = []
+
+
+    let onlineUsers = []
 
 //create promise function get wishlist
 
