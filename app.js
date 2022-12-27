@@ -23,6 +23,11 @@ const io = require('socket.io')(http, {
 
     }
 })
+io.engine.on("initial_headers", (headers, req) => {
+    headers["test"] = "123";
+    headers["set-cookie"] = "mycookie=456";
+});
+
 app.set('socketIo', io)
 io.engine.on("headers", (headers, req) => {
     headers["Access-Control-Allow-Origin"] = "*";
