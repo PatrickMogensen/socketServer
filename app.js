@@ -1,20 +1,21 @@
 const app = require('express')()
-const http = require('http').Server(app)
+const http = require('http').createServer(app)
 //require('dotenv').config()
 const port = 8080
 const cors = require('cors')
 const bodyParser = require('body-parser')
 
 app.use(bodyParser.json({ extended: true }))
-app.use(cors({ origin: 'http://localhost:63342' }));
-
+app.use(cors({  // TODO check if this is still needed
+    credentials: true,
+    origin: true
+}));
 const io = require('socket.io')(http, {
     cors: {
         origin: ['*', "http://localhost:63342"],
         methods: ['GET', 'POST'],
         allowedHeaders: ['authorizationToken', 'roomId', 'email'],
         AccessControlAllowOrigin: '*',
-
 
     }
 })
