@@ -20,6 +20,9 @@ const io = require('socket.io')(http, {
     }
 })
 app.set('socketIo', io)
+io.engine.on("headers", (headers, req) => {
+    headers["Access-Control-Allow-Origin"] = "*";
+});
 
 let onlineUsers = []
 
