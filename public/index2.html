@@ -11,7 +11,7 @@
 
       /// Pass the token you receive from our authentication server here
       // in this example the token is hardcoded
-              {roomId: "63a4218037144465ac2662a9",email: "louis@mail.com", authorizationToken:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk0ZWQ4NDVjNzhjNDE3NjcwZjAyYzYiLCJpYXQiOjE2NzA3MDkxMDd9.CQkxufU2CFMgV74xDHbYhybcFax-iaCiKI6BfOr_my8"}});
+              {roomId: "637e849b6cbce308c1108662",email: "louis@mail.com", authorizationToken:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk0ZWQ4NDVjNzhjNDE3NjcwZjAyYzYiLCJpYXQiOjE2NzA3MDkxMDd9.CQkxufU2CFMgV74xDHbYhybcFax-iaCiKI6BfOr_my8"}});
     var onlineFriends = [];
     var offlineFriends = [];
     var unregisteredFriends = [];
@@ -22,7 +22,7 @@
       document.getElementById("unregisteredFriends").innerHTML = JSON.stringify(unregisteredFriends);
     }
 
-    socket.emit("joinroom", "63a4218037144465ac2662a9");
+    socket.emit("joinroom", "637e849b6cbce308c1108662");
     console.log("joined room");
 
 

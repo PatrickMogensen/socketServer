@@ -13,7 +13,7 @@
 
       /// Pass the token you receive from our authentication server here
       // in this example the token is hardcoded
-              {roomId: "63a4218037144465ac2662a9",email: "lass@mail.com", authorizationToken:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk0ZWQ4NDVjNzhjNDE3NjcwZjAyYzYiLCJpYXQiOjE2NzA3MDkxMDd9.CQkxufU2CFMgV74xDHbYhybcFax-iaCiKI6BfOr_my8"}});
+              {roomId: "637e849b6cbce308c1108662",email: "lass@mail.com", authorizationToken:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk0ZWQ4NDVjNzhjNDE3NjcwZjAyYzYiLCJpYXQiOjE2NzA3MDkxMDd9.CQkxufU2CFMgV74xDHbYhybcFax-iaCiKI6BfOr_my8"}});
     var onlineFriends = [];
     var offlineFriends = [];
     var unregisteredFriends = [];
@@ -24,7 +24,7 @@
       document.getElementById("unregisteredFriends").innerHTML = JSON.stringify(unregisteredFriends);
     }
 
-    socket.emit("joinroom", "63a4218037144465ac2662a9");
+    socket.emit("joinroom", "637e849b6cbce308c1108662");
     console.log("joined room1");
 
 
@@ -55,11 +55,11 @@
 <p>Welcome to Express</p>
 
 <div id="friends-status">
-  <h2>Online Friends</h2>
+  <h2>Online users</h2>
   <p id="onlineFriends"></p>
-  <h2>Offline Friends</h2>
+  <h2>Offline user</h2>
   <p id="offlineFriends"></p>
-  <h2>Unregistered Friends</h2>
+  <h2>Unregistered users</h2>
   <p id="unregisteredFriends"></p>
 </div>
 </body>

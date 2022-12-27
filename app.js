@@ -31,14 +31,14 @@ async function fetchWishlists(id) {
     return await response.json();
 }
 
-fetchWishlists("63a4218037144465ac2662a9").then(data => console.log("fetched data:" + JSON.stringify(data)));
+//fetchWishlists("637e849b6cbce308c1108662").then(data => console.log("fetched data:" + JSON.stringify(data)));
 // add user to onlineUsers array when connected
 io.on('connection', (socket) => {
     console.log('a user connected' + socket.handshake.headers.email )
 
     socket.on('joinroom', async (roomId) => {
         socket.join(roomId)
-        console.log('joined room: ', roomId)
+        console.log('joined room:' + roomId)
         const sockets = await io.in(roomId).fetchSockets();
         // creates an array of email addresses of all connected clients
         const emails = sockets.map((socket) => socket.handshake.headers.email);
@@ -47,13 +47,37 @@ io.on('connection', (socket) => {
         io.emit('online', uniqueEmails)
 
         fetchWishlists(roomId).then(data => {
+
             console.log("fetched data:" + JSON.stringify(data));
-            const invites = data.invites
+            let invites = data.invites
+            if(invites){
+            // remove online users from invites
+            invites = invites.filter((invite) => !uniqueEmails.includes(invite.email));
+
             // get invites where status is accepted
             const acceptedInvites = invites.filter(invite => invite.status === 'accepted')
+            // get emails of accepted invites
+            if(acceptedInvites.length > 0) {
+                const acceptedEmails = acceptedInvites.map(invite => invite.email)
+                console.log("wtf man")
+
+                console.log("accepted emails: " + acceptedEmails)
+
+                // get invites where status is pending
+                const pendingInvites = invites.filter(invite => invite.status === 'pending')
+                if (pendingInvites.length > 0) {
+                    // get emails of pending invites
+                    const pendingEmails = pendingInvites.map(invite => invite.email)
+                    console.log(pendingEmails)
 
 
-            socket.emit('offline', offline);
+
+                    socket.emit('offline', acceptedEmails);
+                    socket.emit('invited', pendingEmails);
+                }
+            }
+            }
+
         })
         //console.log(sockets[0].handshake.headers.email);
 
