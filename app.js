@@ -12,7 +12,9 @@ const io = require('socket.io')(http, {
     cors: {
         origin: '*',
         methods: ['GET', 'POST'],
-        allowedHeaders: ['authorizationToken', 'roomId', 'email']
+        allowedHeaders: ['authorizationToken', 'roomId', 'email'],
+        accessControlAllowOrigin: '*',
+
 
     }
 })
