@@ -16,7 +16,7 @@ app.use((req, res, next) => {
 })
 const io = require('socket.io')(http, {
     cors: {
-        origin: ['*', "http://localhost:63342", "https://si-wishlist-frontend.onrender.com/"],
+        origin: ['*', "http://localhost:63342", "https://si-wishlist-frontend.onrender.com"],
         methods: ['GET', 'POST'],
         allowedHeaders: ['authorizationToken', 'roomId', 'email', 'Access-Control-Allow-Origin']
     }
