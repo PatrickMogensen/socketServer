@@ -18,13 +18,10 @@ const io = require('socket.io')(http, {
     cors: {
         origin: ['*', "http://localhost:63342", "https://si-wishlist-frontend.onrender.com/"],
         methods: ['GET', 'POST'],
-        allowedHeaders: ['authorizationToken', 'roomId', 'email', 'Access-Control-Allow-Origin'],
-        "Access-Control-Allow-Origin": '*',
-
+        allowedHeaders: ['authorizationToken', 'roomId', 'email', 'Access-Control-Allow-Origin']
     }
 })
 io.engine.on("initial_headers", (headers, req) => {
-    headers["test"] = "123";
     headers["Access-Control-Allow-Origin"] = "*";
 });
 
