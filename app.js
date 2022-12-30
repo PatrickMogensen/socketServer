@@ -12,20 +12,20 @@ app.use(cors({  // TODO check if this is still needed
 }));
 
 app.use((req, res, next) => {
-    res.append('Access-Control-Allow-Origin', ['*']);
+    res.append('Access-Control-Allow-Origin', ['*','https://si-wishlist-frontend.onrender.com/']);
 })
 const io = require('socket.io')(http, {
     cors: {
-        origin: ['*', "http://localhost:63342"],
+        origin: ['*', "http://localhost:63342", "https://si-wishlist-frontend.onrender.com/"],
         methods: ['GET', 'POST'],
-        allowedHeaders: ['authorizationToken', 'roomId', 'email'],
+        allowedHeaders: ['authorizationToken', 'roomId', 'email', 'Access-Control-Allow-Origin'],
         "Access-Control-Allow-Origin": '*',
 
     }
 })
 io.engine.on("initial_headers", (headers, req) => {
     headers["test"] = "123";
-    headers["set-cookie"] = "mycookie=456";
+    headers["Access-Control-Allow-Origin"] = "*";
 });
 
 app.set('socketIo', io)
